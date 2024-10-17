@@ -21,7 +21,7 @@
 .gradientText {
     font-size: 3rem;
 
-    background: linear-gradient(90deg, red, orange, yellow); /* Gradient colors */
+    background: linear-gradient(90deg, orange, red, orange); /* Gradient colors */
     
     /* Webkit specific background-clip */
     -webkit-background-clip: text; /* Safari and Chrome */

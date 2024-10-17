@@ -55,16 +55,21 @@ header {
   text-decoration: none;
 }
 
+.nav-links a:hover{
+  color: yellow;
+  text-decoration-line: underline;
+}
+
 main {
   padding: 2rem;
-  padding-top: 0;
-  background-color: hsl(117, 53%, 83%);
-  max-width: 1200px;
-  margin: 0;
+  padding-top: 20px;
+  max-width: 2200px;
   flex: 1; /* Expands main content to fill available space */
   display: flex;
   justify-content: center; /* Centers content horizontally */
-  align-items:flex-start; /* Centers content vertically */
+  align-items: center; /* Centers content vertically */
+  flex-direction: column; /* Ensure child elements stack vertically */
+  text-align: center; /* Center text inside main */
 }
 
 footer {

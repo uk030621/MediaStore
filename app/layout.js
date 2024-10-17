@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <body>
         <header>
           <nav className="navbar">
-            <a href="/" className="logo">My Media Store <span className='text-5xl'>📺</span></a>
+            <a href="/" className="logo">My Media Locker <span className='text-5xl'>📺</span></a>
             <ul className="nav-links">
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">Store</Link></li>
