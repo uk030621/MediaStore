@@ -19,7 +19,7 @@ export default function HomePage() {
           <li>
         ❤️ Add your favourite YouTube videos.<br />
         <span className='text-sm text-slate-400'>
-          Tip: To exclude adverts just enter the video ID.  Example: sRxrwjOtIag&t
+          Tip: To exclude adverts just enter the video ID.  Example: <span className='text-red-500'>sRxrwjOtIag&t</span>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px'}}>
             {/* Centralizing YouTube component */}
             <YouTube
@@ -38,7 +38,7 @@ export default function HomePage() {
         </span>
       </li>
             <li className='mt-6'>🏦 Add urls to useful on-line information for quick reference. </li>
-            <li className='mt-6'>🔍 Quickly search your store so the information you are looking for is never far away.</li>
+            <li className='mt-6'>🔍 Easily search your store to keep the information you need always within reach.</li>
             <li className='mt-6'>🛒 One stop shop for all your media links.</li>
           </ul>
         </div>
