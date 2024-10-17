@@ -38,7 +38,7 @@ export default function HomePage() {
         </span>
       </li>
             <li className='mt-6'>🏦 Add urls to useful on-line information for quick reference. </li>
-            <li className='mt-6'>🔍 Easily search your store to keep the information you need always within reach.</li>
+            <li className='mt-6'>🔍 Easily search your locker to keep the information you need always within reach.</li>
             <li className='mt-6'>🛒 One stop shop for all your media links.</li>
             <li className='mt-6'>🏆 Bonus applications you might like.</li>
           </ul>
