@@ -1,7 +1,6 @@
 // app/page.js
 "use client"
 import styles from '../styles/Home.module.css'; // Import the CSS module
-import Link from 'next/link';
 import YouTube from 'react-youtube'; // Import the YouTube component
 
 export default function HomePage() {
