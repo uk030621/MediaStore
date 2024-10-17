@@ -20,9 +20,9 @@ export default function AboutPage() {
         />
       </div>
 
-      <h1 className={styles.gradientText}>Media Store</h1>
+      <h1 className={styles.gradientText}>Media Locker</h1>
       <p className={styles.description}>
-        Media Store Goes Here
+        Media Locker Goes Here
       </p>
     </div>
   );
