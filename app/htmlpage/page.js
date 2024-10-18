@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-/*import Link from 'next/link';*/
 import YouTube from 'react-youtube'; // Import YouTube component from 'react-youtube'
 
 export default function Home() {
@@ -11,38 +10,12 @@ export default function Home() {
   const [displayedImageUrl, setDisplayedImageUrl] = useState('');
   const [storedUrls, setStoredUrls] = useState([]);
   const [error, setError] = useState('');
-  /*const [imageIndex, setImageIndex] = useState(0);*/
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredUrls, setFilteredUrls] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const collectionRoute = '/api/urlhtml'
-  /*const pageName = 'Film'*/
-
-  /*const imageUrls = [
-    {url: '/Film.png', link:'https://www.bing.com/images/search?form=IARRSM&q=taylor+swift&first=1'},
-    // Add more images if needed
-  ];*/
-
-  /*const imageSizes = {
-    '/Film.png': { width: 150, height: 150 },
-    // Define sizes for other images if added
-  };*/
-
-  /*const getImageSize = (imageName) => {
-    return imageSizes[imageName] || { width: 100, height: 100 };
-  };*/
-
-  /*const selectNextImage = () => {
-    setImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
-  };*/
-
-  /*const handleToggle = (event) => {
-    if (event.target.open) {
-      selectNextImage();
-    }
-  };*/
-
+  
   const getContentType = (url) => {
     if (isYouTubeUrl(url)) {
       return 'youtube';
@@ -221,7 +194,7 @@ export default function Home() {
       default:
         return (
           <div style={styles.webpagePreview}>
-            <p>{storedUrl.title}</p>
+            {/*<p>{storedUrl.title}</p>*/}
             <a href={storedUrl.url} target="_blank" rel="noopener noreferrer" style={styles.previewLink}>
               Open Website
             </a>
@@ -258,7 +231,7 @@ export default function Home() {
 
     <div style={styles.container}>
       {/* Navigation Links */}
-      <div style={{ marginTop: '10px', marginBottom: '20px', fontWeight: 'lighter' }}>
+      {/*<div style={{ marginTop: '10px', marginBottom: '20px', fontWeight: 'lighter' }}>*/}
         {/*<p>
           <Link href='/'><span className='link'>Music</span></Link>
           <Link href='/htmlpage'><span className='link'>Film</span></Link>
@@ -267,39 +240,12 @@ export default function Home() {
           <Link href='/reactpage'><span className='link'>Code</span></Link>
           <Link href='/miscpage'><span className='link'>Misc</span></Link>
         </p>*/}
-      </div>
+      {/*</div>*/}
 
       {/* Title */}
       <h2 style={styles.title}>
         Media Library
       </h2>
-
-      {/* Details with Image Carousel */}
-      {/*<details onToggle={handleToggle} style={{ textAlign: 'left', marginBottom: '10px' }}>
-        <summary style={{ color: 'grey', cursor: 'pointer', fontFamily: 'arial', fontSize: '1rem' }}>
-          {pageName} 🖥️
-        </summary>
-        <div style={{ marginLeft: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          Link to the URL associated with the current image
-          <a href={imageUrls[imageIndex].link} target="_blank" rel="noopener noreferrer">
-            <Image
-              className='uk-pic'
-              src={imageUrls[imageIndex].url} // Use the sequential image URL
-              alt="Portfolio Image"
-              width={getImageSize(imageUrls[imageIndex].url).width} // Dynamically set width
-              height={getImageSize(imageUrls[imageIndex].url).height} // Dynamically set height
-              priority={true}
-              style={{
-                marginLeft: '5px',
-                marginRight: '5px',
-                marginBottom: '15px',
-                borderRadius: '10px',
-                border: '2px solid black',
-              }}
-            />
-          </a>
-        </div>
-      </details>*/}
 
       {/* Displayed Image */}
       {displayedImageUrl && (
@@ -396,7 +342,7 @@ const styles = {
 
   title: {
     fontSize: '2rem',
-    marginTop:'10px',
+    marginTop:'20px',
     marginBottom: '10px',
     textAlign:'left',
     color:'grey',
