@@ -23,7 +23,7 @@ export default function HomePage() {
           Keeping your most important media in a personal repository for easy reference.
         </p>
         <div className='flex justify-center items-center' >
-          <ul className="text-center mt-12 text-slate-800">
+          <ul className="text-center mt-4 text-slate-800">
           <li>
         ❤️ Add your favourite YouTube videos.<br />
         <span className='text-sm text-slate-600'>
@@ -45,10 +45,10 @@ export default function HomePage() {
           </div>
         </span>
       </li>
-      <li className="mt-6">🏦 Add URLs for quick reference.</li>
-            <li className="mt-6">🔍 Easily search your library.</li>
-            <li className="mt-6">🛒 Centralize your media links.</li>
-            <li className="mt-6">🏆 Bonus applications included.</li>
+      <li className="mt-5">🏦 Add URLs for quick reference.</li>
+            <li className="mt-5">🔍 Easily search your library.</li>
+            <li className="mt-5">🛒 Centralize your media links.</li>
+            <li className="mt-5">🏆 Bonus applications included.</li>
           </ul>
         </div>
       </div>
