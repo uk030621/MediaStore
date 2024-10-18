@@ -25,8 +25,9 @@ export default function RootLayout({ children }) {
             />
             <ul className="nav-links">
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">Library</Link></li>
+              <li><Link href="/htmlpage">Library</Link></li>
               <li><Link href="/services">Bonus</Link></li>
+              {/*<li><Link href="/htmlpage">Form</Link></li>*/}
             </ul>
           </nav>
         </header>
