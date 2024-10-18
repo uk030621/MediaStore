@@ -65,9 +65,7 @@ header {
 }
 
 main {
-  padding: 2rem;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding: 0px; 
   max-width: 2200px;
   flex: 1; /* Expands main content to fill available space */
   display: flex;

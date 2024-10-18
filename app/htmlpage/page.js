@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+/*import Link from 'next/link';*/
 import YouTube from 'react-youtube'; // Import YouTube component from 'react-youtube'
 
 export default function Home() {
@@ -11,37 +11,37 @@ export default function Home() {
   const [displayedImageUrl, setDisplayedImageUrl] = useState('');
   const [storedUrls, setStoredUrls] = useState([]);
   const [error, setError] = useState('');
-  const [imageIndex, setImageIndex] = useState(0);
+  /*const [imageIndex, setImageIndex] = useState(0);*/
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredUrls, setFilteredUrls] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const collectionRoute = '/api/urlhtml'
-  const pageName = 'Film'
+  /*const pageName = 'Film'*/
 
-  const imageUrls = [
+  /*const imageUrls = [
     {url: '/Film.png', link:'https://www.bing.com/images/search?form=IARRSM&q=taylor+swift&first=1'},
     // Add more images if needed
-  ];
+  ];*/
 
-  const imageSizes = {
+  /*const imageSizes = {
     '/Film.png': { width: 150, height: 150 },
     // Define sizes for other images if added
-  };
+  };*/
 
-  const getImageSize = (imageName) => {
+  /*const getImageSize = (imageName) => {
     return imageSizes[imageName] || { width: 100, height: 100 };
-  };
+  };*/
 
-  const selectNextImage = () => {
+  /*const selectNextImage = () => {
     setImageIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
-  };
+  };*/
 
-  const handleToggle = (event) => {
+  /*const handleToggle = (event) => {
     if (event.target.open) {
       selectNextImage();
     }
-  };
+  };*/
 
   const getContentType = (url) => {
     if (isYouTubeUrl(url)) {
@@ -502,6 +502,7 @@ const styles = {
     border: 'none',
     borderRadius: '4px',
     cursor: 'pointer',
+    marginTop:'8px'
   },
   error: {
     color: 'red',
