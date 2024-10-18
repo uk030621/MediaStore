@@ -65,7 +65,8 @@ header {
 
 main {
   padding: 2rem;
-  padding-top: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   max-width: 2200px;
   flex: 1; /* Expands main content to fill available space */
   display: flex;
@@ -91,5 +92,58 @@ footer {
 
   .nav-links li {
     margin: 0.5rem 0;
+  }
+}
+
+/* app/globals.css */
+
+.background-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Ensures the video covers the viewport without distortion */
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
   }
 }
