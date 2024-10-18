@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className='flex flex-col items-center'>
       <div className={styles.homeContainer}>
-        <h1 className={styles.gradientText}>Welcome to your media locker</h1>
+        <h1 className={styles.gradientText}>Welcome to your media library</h1>
         <p className={styles.description}>
           Keeping your most important media in a personal repository for easy reference.
         </p>
@@ -38,7 +38,7 @@ export default function HomePage() {
         </span>
       </li>
             <li className='mt-6'>🏦 Add urls to useful on-line information for quick reference. </li>
-            <li className='mt-6'>🔍 Easily search your locker to keep the information you need always within reach.</li>
+            <li className='mt-6'>🔍 Easily search your library to keep the information you need always within reach.</li>
             <li className='mt-6'>🛒 One stop shop for all your media links.</li>
             <li className='mt-6'>🏆 Bonus applications you might like.</li>
           </ul>

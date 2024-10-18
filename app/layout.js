@@ -1,6 +1,8 @@
 // app/layout.js
 import './globals.css';
 import Link from 'next/link';
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'; // Import the CSS module
 
 export const metadata = {
   title: 'My Next.js App',
@@ -13,10 +15,17 @@ export default function RootLayout({ children }) {
       <body>
         <header>
           <nav className="navbar">
-            <a href="/" className="logo">My Media Locker <span className='text-5xl'>📺</span></a>
+            {/*<a href="/" className="logo">Media Library <span className='text-5xl'>📺</span></a>*/}
+            <Image
+            className='rounded-lg'
+              src="/Globe.png"
+              width={70}
+              height={70}
+              alt="Picture of the author"
+            />
             <ul className="nav-links">
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">Locker</Link></li>
+              <li><Link href="/about">Library</Link></li>
               <li><Link href="/services">Bonus</Link></li>
             </ul>
           </nav>
@@ -25,7 +34,7 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
         
         <footer>
-          <p>© 2024 LWJ Media Store. All rights reserved.</p>
+          <p>© 2024 LWJ Media Library. All rights reserved.</p>
         </footer>
       </body>
     </html>
