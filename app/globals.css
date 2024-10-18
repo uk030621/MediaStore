@@ -45,11 +45,12 @@ header {
 .nav-links {
   list-style: none;
   display: flex;
-  margin-right: 30px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .nav-links li {
-  margin-left: 2rem;
+  margin-left: 2.5rem;
 }
 
 .nav-links a {
@@ -83,7 +84,7 @@ footer {
   width: 100%;
 }
 
-/* Media Query */
+/* Media Query 
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
@@ -92,7 +93,7 @@ footer {
   .nav-links li {
     margin: 0.5rem 0;
   }
-}
+}*/
 
 /* app/globals.css */
 

@@ -1,8 +1,8 @@
 // app/layout.js
 import './globals.css';
 import Link from 'next/link';
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'; // Import the CSS module
+/*import Image from 'next/image'*/
+
 
 export const metadata = {
   title: 'My Next.js App',
@@ -16,13 +16,13 @@ export default function RootLayout({ children }) {
         <header>
           <nav className="navbar">
             {/*<a href="/" className="logo">Media Library <span className='text-5xl'>📺</span></a>*/}
-            <Image
+            {/*<Image
             className='logo'
               src="/lion.jpg"
               width={100}
               height={70}
               alt="Picture of the author"
-            />
+            />*/}
             <ul className="nav-links">
               <li><Link href="/">Home</Link></li>
               <li><Link href="/htmlpage">Library</Link></li>

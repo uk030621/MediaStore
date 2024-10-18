@@ -252,12 +252,6 @@ export default function Home() {
   };
 
   return (
-<div className="background-container">
-      {/* Video Background */}
-      <video autoPlay muted loop playsInline className="background-video">
-        <source src="/passingclouds.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
 
 
 
@@ -372,7 +366,7 @@ export default function Home() {
         </ul>
       </div>
     </div>
-    </div>
+    
   );
 }
 

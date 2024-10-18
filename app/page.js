@@ -23,10 +23,10 @@ export default function HomePage() {
           Keeping your most important media in a personal repository for easy reference.
         </p>
         <div className='flex justify-center items-center' >
-          <ul className="text-center mt-12 text-slate-500">
+          <ul className="text-center mt-12 text-slate-800">
           <li>
         ❤️ Add your favourite YouTube videos.<br />
-        <span className='text-sm text-slate-400'>
+        <span className='text-sm text-slate-600'>
           Tip: To exclude adverts just enter the video ID.  Example: <span className='text-red-500'>sRxrwjOtIag&t</span>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px'}}>
             {/* Centralizing YouTube component */}
@@ -45,10 +45,10 @@ export default function HomePage() {
           </div>
         </span>
       </li>
-            <li className='mt-6'>🏦 Add urls to useful on-line information for quick reference. </li>
-            <li className='mt-6'>🔍 Easily search your library to keep the information you need always within reach.</li>
-            <li className='mt-6'>🛒 One stop shop for all your media links.</li>
-            <li className='mt-6'>🏆 Bonus applications you might like.</li>
+      <li className="mt-6">🏦 Add URLs for quick reference.</li>
+            <li className="mt-6">🔍 Easily search your library.</li>
+            <li className="mt-6">🛒 Centralize your media links.</li>
+            <li className="mt-6">🏆 Bonus applications included.</li>
           </ul>
         </div>
       </div>
