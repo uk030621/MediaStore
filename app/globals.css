@@ -19,7 +19,7 @@ body {
 }
 
 header {
-  background-color: #333;
+  background-color: red;
   padding: 1rem;
   color: white;
   width: 100%;
@@ -75,7 +75,7 @@ main {
 }
 
 footer {
-  background-color: #333;
+  background-color: red;
   color: white;
   text-align: center;
   padding: 1rem 0;
