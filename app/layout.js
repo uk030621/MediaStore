@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
           <nav className="navbar">
             {/*<a href="/" className="logo">Media Library <span className='text-5xl'>📺</span></a>*/}
             <Image
-            className='rounded-lg'
+            className='logo'
               src="/Globe.png"
-              width={70}
-              height={70}
+              width={100}
+              height={100}
               alt="Picture of the author"
             />
             <ul className="nav-links">
