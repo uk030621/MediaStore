@@ -20,7 +20,7 @@ body {
 
 header {
   background-color: hsl(0, 4%, 10%);
-  padding: 1rem;
+  padding: 0.5rem;
   color: white;
   width: 100%;
   position: sticky; /* Ensures header stays at the top */
@@ -46,7 +46,7 @@ header {
   list-style: none;
   display: flex;
   margin-right: 0px;
-  margin-left: 0px;
+  margin-left: 5px;
 }
 
 .nav-links li {
@@ -61,6 +61,7 @@ header {
 .nav-links a:hover{
   color: yellow;
   text-decoration-line: underline;
+  text-underline-offset: 5px;
 }
 
 main {

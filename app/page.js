@@ -47,7 +47,7 @@ export default function HomePage() {
       </li>
       <li className="mt-5">🏦 Add URLs for quick reference.</li>
             <li className="mt-5">🔍 Easily search your library.</li>
-            <li className="mt-5">🛒 Centralize your media links.</li>
+            <li className="mt-5">🛒 Centralise your media links.</li>
             <li className="mt-5">🏆 Bonus applications included.</li>
           </ul>
         </div>
