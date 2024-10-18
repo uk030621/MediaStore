@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
             {/*<a href="/" className="logo">Media Library <span className='text-5xl'>📺</span></a>*/}
             <Image
             className='logo'
-              src="/Globe.png"
+              src="/lion.jpg"
               width={100}
-              height={100}
+              height={70}
               alt="Picture of the author"
             />
             <ul className="nav-links">

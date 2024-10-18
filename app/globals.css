@@ -19,7 +19,7 @@ body {
 }
 
 header {
-  background-color: red;
+  background-color: hsl(0, 4%, 10%);
   padding: 1rem;
   color: white;
   width: 100%;
@@ -38,9 +38,8 @@ header {
 
 .logo {
   margin-left: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-
+  opacity: 1;
+  border-radius: 50px;
 }
 
 .nav-links {

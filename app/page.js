@@ -8,6 +8,14 @@ export default function HomePage() {
   const videoId = 'sRxrwjOtIag'; // Example YouTube video ID
 
   return (
+<div className="background-container">
+      {/* Video Background */}
+      <video autoPlay muted loop playsInline className="background-video">
+        <source src="/passingclouds.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+
     <div className='flex flex-col items-center'>
       <div className={styles.homeContainer}>
         <h1 className={styles.gradientText}>Welcome to your media library</h1>
@@ -45,5 +53,6 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+  </div>
   );
 }
