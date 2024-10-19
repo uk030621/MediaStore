@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import YouTube from 'react-youtube'; // Import YouTube component from 'react-youtube'
 
 export default function Home() {
@@ -278,6 +279,7 @@ export default function Home() {
 
         <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
           <button type="submit" style={styles.button}>Add Media</button>
+          <Link className="ml-5 mt-2" href="/youtube">Search YouTube</Link>
         </div>
       </form>
 
@@ -312,16 +314,16 @@ export default function Home() {
         </ul>
       </div>
     </div>
-    
   );
 }
 
 
 const styles = {
   container: {
-    maxWidth: '600px',
+    width: '100%', // Take full width of the page
+    maxWidth: '1200px', // Optional: Set a reasonable max width for large screens
     margin: '0 auto',
-    padding: '0 20px',
+    padding: '0 20px', // Add padding for spacing inside the container
     textAlign: 'left',
   },
 
@@ -398,8 +400,16 @@ const styles = {
     objectFit: 'cover',
     borderRadius: '4px',
     marginBottom: '10px',
-    cursor: 'pointer', // Change cursor to pointer
+    cursor: 'pointer',
   },
+
+  videoContainer: {
+    width: '100%',
+    height: '200px',
+    marginBottom: '10px',
+  },
+
+
   previewVideo: {
     width: '100%',
     maxHeight: '200px',
@@ -419,27 +429,29 @@ const styles = {
     textDecoration: 'none',
   },
   urlList: {
-    listStyleType: 'none',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', // Create responsive grid columns
+    gap: '20px', // Space between grid items
     padding: 0,
     marginTop: '10px',
+    listStyleType: 'none',
+    margin: 0, // Ensure there’s no margin that causes extra space
   },
   urlItem: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '10px 0',
-    borderBottom: '1px solid #eaeaea',
+    padding: '10px',
+    border: '1px solid #eaeaea',
+    borderRadius: '8px',
+    backgroundColor: '#f9f9f9',
     wordBreak: 'break-word',
   },
   previewContainer: {
     display: 'flex',
-    border:'2px solid grey',
-    padding:'15px',
-    backgroundColor:'lightblue',
-    borderRadius:'8px',
-    flexDirection: 'column', // Stack items vertically
-    alignItems: 'flex-start', // Left align items
-    marginBottom: '10px', // Space between items
+    flexDirection: 'column',
+    alignItems: 'center',
+    border: '2px solid grey',
+    padding: '15px',
+    backgroundColor: 'lightblue',
+    borderRadius: '8px',
   },
   deleteButton: {
     padding: '5px 10px',
@@ -448,7 +460,7 @@ const styles = {
     border: 'none',
     borderRadius: '4px',
     cursor: 'pointer',
-    marginTop:'8px'
+    marginTop: '8px',
   },
   error: {
     color: 'red',
