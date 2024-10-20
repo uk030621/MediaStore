@@ -231,18 +231,7 @@ export default function Home() {
 
 
     <div style={styles.container}>
-      {/* Navigation Links */}
-      {/*<div style={{ marginTop: '10px', marginBottom: '20px', fontWeight: 'lighter' }}>*/}
-        {/*<p>
-          <Link href='/'><span className='link'>Music</span></Link>
-          <Link href='/htmlpage'><span className='link'>Film</span></Link>
-          <Link href='/csspage'><span className='link'>Learn</span></Link>
-          <Link href='/javascriptpage'><span className='link'>News</span></Link>
-          <Link href='/reactpage'><span className='link'>Code</span></Link>
-          <Link href='/miscpage'><span className='link'>Misc</span></Link>
-        </p>*/}
-      {/*</div>*/}
-
+      
       {/* Title */}
       <h2 style={styles.title}>
         Media Library

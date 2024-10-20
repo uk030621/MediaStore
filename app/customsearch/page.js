@@ -62,7 +62,8 @@ export default function SearchComponent() {
 
   return (
     <div className="search-container">
-      <Link className="mb-4" href="/htmlpage"><button>⬅️ Back</button></Link>
+      <h1 className="text-2xl font-bold mb-4">URL Search</h1>
+      <Link className="mb-4" href="/htmlpage"><button style={{backgroundColor:'black'}}>⬅️ Back</button></Link>
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
@@ -71,29 +72,28 @@ export default function SearchComponent() {
           placeholder="Enter search query"
           required
         />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Searching..." : "Search"}
-        </button>
-        <button type="button" onClick={handleClear}>Clear/Reset</button>
+        <div className="flex space-x-24">
+          <button style={{width:'fit-content'}} type="submit" disabled={loading}>{loading ? "Searching..." : "Search"}</button>
+          <button style={{width:'fit-content', marginLeft:'100px', backgroundColor:'black'}} type="button" onClick={handleClear}>Clear/Reset</button>
+        </div>
       </form>
 
       {/* Display Search Results */}
       {results.length > 0 && (
         <div className="results">
-          <h3>Search Results:</h3>
+          <h3 className="mb-4 text-lg">Search Results:</h3>
           <table>
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Action</th>
+                <th>URL</th>
               </tr>
             </thead>
             <tbody>
               {results.map((result, index) => (
                 <tr key={index}>
                   <td><a href={result.url} target="_blank" rel="noopener noreferrer">{result.title}</a></td>
-                  <td><button onClick={() => handleCopy(result.url)}>Copy URL</button></td>
+                  <td><button onClick={() => handleCopy(result.url)}>Copy</button></td>
                 </tr>
               ))}
             </tbody>
@@ -155,7 +155,8 @@ export default function SearchComponent() {
 
         td a {
           text-decoration: none;
-          color: #0070f3;
+          /*color: #0070f3;*/
+          color: grey;
         }
 
         td a:hover {
