@@ -64,7 +64,8 @@ const YouTubeSearch = () => {
 
   return (
     <div className="container mx-auto">
-        <Link className="mb-5" href="/htmlpage">Back to library</Link>
+      <Link href="/htmlpage" ><button className="bg-black text-white p-2 ml-2 rounded-md">⬅️ Library</button></Link>
+        
       <div className="mb-4">
         <input
           type="text"
@@ -76,7 +77,7 @@ const YouTubeSearch = () => {
         <button onClick={handleSearch} className="bg-blue-500 text-white p-2 ml-2 rounded-md">
           Search
         </button>
-        <button onClick={handleClear} className="bg-gray-500 text-white p-2 ml-2 rounded-md">
+        <button onClick={handleClear} className="bg-black text-white p-2 ml-2 rounded-md">
           Clear/Reset
         </button>
       </div>

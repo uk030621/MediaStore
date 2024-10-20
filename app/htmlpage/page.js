@@ -279,7 +279,8 @@ export default function Home() {
 
         <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
           <button type="submit" style={styles.button}>Add Media</button>
-          <Link className="ml-5 mt-2" href="/youtube">Search YouTube</Link>
+          <Link href="/youtube"><button style={styles.youtubeButton}>🔍 YouTube</button></Link>
+          {/*<Link className="ml-5 text-white bg-slate-800" href="/youtube">Search YouTube</Link>*/}
         </div>
       </form>
 
@@ -377,6 +378,16 @@ const styles = {
     border: 'none',
     borderRadius: '4px',
     cursor: 'pointer',
+  },
+
+  youtubeButton: {
+    padding: '10px 20px',
+    backgroundColor: 'black',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    marginLeft: "5px",
   },
 
   resetbutton:{
