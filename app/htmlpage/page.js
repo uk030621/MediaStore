@@ -280,6 +280,9 @@ export default function Home() {
         <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
           <button type="submit" style={styles.button}>Add Media</button>
           <Link href="/youtube"><button style={styles.youtubeButton}>🔍 YouTube</button></Link>
+          <Link href="/customsearch"><button style={styles.youtubeButton}>🔍 URLs</button></Link>
+          {/*<Link href="/search"><button style={styles.youtubeButton}>🔍 URLs</button></Link>*/}
+          {/*<a className='ml-4' href="https://cse.google.com/cse?cx=60e15f859caa94509" target="_blank" rel="noopener noreferrer">🔍 google it</a>*/}
           {/*<Link className="ml-5 text-white bg-slate-800" href="/youtube">Search YouTube</Link>*/}
         </div>
       </form>
