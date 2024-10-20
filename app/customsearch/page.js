@@ -8,70 +8,51 @@ export default function SearchComponent() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Google Custom Search API Key and CSE ID from environment variables
-  const GOOG_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;  // Ensure these are correctly set in .env.local
-  const CSEngine_ID = process.env.NEXT_PUBLIC_CSE_ID;
-
-  // Debugging logs to ensure the API key and CSE ID are available
-  console.log("Google API Key: ", GOOG_API_KEY);
-  console.log("CSEngine ID: ", CSEngine_ID);
-
-  // Handle form submission to Google Custom Search API
+  // Handle form submission by sending search query to the server
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!query) return;
 
-    // Log the search query for debugging
-    console.log("Search Query: ", query);
-
     setLoading(true);
     setResults([]);
 
-    // Google Custom Search API URL
-    const searchUrl = `https://www.googleapis.com/customsearch/v1?key=${GOOG_API_KEY}&cx=${CSEngine_ID}&q=${encodeURIComponent(query)}`;
-
-    // Log the constructed search URL for debugging
-    console.log("Constructed Search URL: ", searchUrl);
-
     try {
-      const response = await fetch(searchUrl);
-
-      // Log the response to check if the API request was successful
-      console.log("API Response: ", response);
-
-      // Check if the response is ok (status 200)
-      if (!response.ok) {
-        console.error(`Error: Received status ${response.status}`);
-        return;
-      }
+      // Make a POST request to the server-side API route
+      const response = await fetch('/api/customsearch', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query }),  // Send the search query
+      });
 
       const data = await response.json();
 
-      // Log the response data for debugging
-      console.log("API Response Data: ", data);
-
-      // If there are search results, map them to display titles and URLs
-      if (data.items) {
-        setResults(data.items.map(item => ({ title: item.title, url: item.link })));
-      } else {
-        console.log("No results found.");
+      // Handle errors in the response
+      if (!response.ok) {
+        console.error("Error:", data.error || "Unknown error");
         setResults([]);
+        return;
+      }
+
+      // Set the results returned from the API
+      if (data.results) {
+        setResults(data.results);
       }
     } catch (error) {
-      // Log any error that occurs during the fetch operation
-      console.error("Error fetching search results: ", error);
+      // Log any client-side error that occurs during the fetch operation
+      console.error("Error fetching search results:", error);
       setResults([]);
     }
 
     setLoading(false);
   };
 
-// Function to clear/reset the search form
-const handleClear = () => {
-  setQuery('');       // Clear the search query
-  setResults([]);
-};
-
+  // Function to clear/reset the search form
+  const handleClear = () => {
+    setQuery('');
+    setResults([]);
+  };
 
   // Handle copying the URL to the clipboard
   const handleCopy = (url) => {
@@ -81,9 +62,8 @@ const handleClear = () => {
 
   return (
     <div className="search-container">
-      <Link className="mb-4" href="/htmlpage"><button >⬅️ Back</button></Link>
+      <Link className="mb-4" href="/htmlpage"><button>⬅️ Back</button></Link>
       <form onSubmit={handleSearch} className="search-form">
-        {/* Search Input */}
         <input
           type="text"
           value={query}
@@ -92,26 +72,32 @@ const handleClear = () => {
           required
         />
 
-        {/* Search Button */}
         <button type="submit" disabled={loading}>
           {loading ? "Searching..." : "Search"}
         </button>
-        <button onClick={handleClear}>Clear/Reset</button>
+        <button type="button" onClick={handleClear}>Clear/Reset</button>
       </form>
 
       {/* Display Search Results */}
       {results.length > 0 && (
         <div className="results">
           <h3>Search Results:</h3>
-          <ul>
-            {results.map((result, index) => (
-              <li key={index}>
-                <a href={result.url} target="_blank" rel="noopener noreferrer">{result.title}</a>
-                <button onClick={() => handleCopy(result.url)}>Copy URL</button>
-                
-              </li>
-            ))}
-          </ul>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {results.map((result, index) => (
+                <tr key={index}>
+                  <td><a href={result.url} target="_blank" rel="noopener noreferrer">{result.title}</a></td>
+                  <td><button onClick={() => handleCopy(result.url)}>Copy URL</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
 
@@ -149,31 +135,38 @@ const handleClear = () => {
 
         .results {
           margin-top: 2rem;
+          width: 100%;
         }
 
-        ul {
-          list-style-type: none;
-          padding: 0;
+        table {
+          width: 100%;
+          border-collapse: collapse;
         }
 
-        li {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 0.5rem;
+        th, td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
         }
 
-        li a {
+        th {
+          background-color: #f2f2f2;
+        }
+
+        td a {
           text-decoration: none;
           color: #0070f3;
         }
 
-        li a:hover {
+        td a:hover {
           text-decoration: underline;
         }
 
-        li button {
+        td button {
           background-color: #f44336;
           color: white;
+          padding: 5px 10px;
+          cursor: pointer;
         }
       `}</style>
     </div>
