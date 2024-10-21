@@ -67,12 +67,12 @@ header {
 main {
   padding: 0px;
   max-width: 2200px;
-  flex: 1; /* Expands main content to fill available space */
+  flex: 1;
   display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  flex-direction: column; /* Ensure child elements stack vertically */
-  text-align: center; /* Center text inside main */
+  justify-content: flex-start; /* Align content towards the top */
+  align-items: flex-start; /* Align items to start instead of center */
+  flex-direction: column;
+  text-align: center;
 }
 
 footer {

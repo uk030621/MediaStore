@@ -61,66 +61,82 @@ export default function SearchComponent() {
   };
 
   return (
-    <div className="search-container">
+    <div className="flex flex-col items-center p-8">
+      {" "}
+      {/* search-container */}
       <h1 className="text-2xl font-bold mb-4">URL Search</h1>
       <Link className="mb-4" href="/htmlpage">
-        <button style={{ backgroundColor: "black" }}>⬅️ Back</button>
+        <button className="bg-black text-white px-4 py-2 rounded">
+          ⬅️ Back
+        </button>
       </Link>
-      <form onSubmit={handleSearch} className="search-form">
+      <form onSubmit={handleSearch} className="flex flex-col gap-4 w-72">
+        {" "}
+        {/* search-form */}
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter search query"
           required
+          className="p-2 text-base border border-gray-300 rounded"
         />
-        <div className="flex space-x-24">
+        <div className="flex justify-between space-x-24">
+          {" "}
+          {/* button container */}
           <button
-            style={{ width: "fit-content" }}
             type="submit"
             disabled={loading}
+            className={`px-4 py-2 text-white rounded ${
+              loading ? "bg-gray-500" : "bg-blue-600"
+            }`}
           >
             {loading ? "Searching..." : "Search"}
           </button>
           <button
-            style={{
-              width: "fit-content",
-              marginLeft: "100px",
-              backgroundColor: "black",
-            }}
             type="button"
             onClick={handleClear}
+            className="px-4 py-2 bg-black text-white rounded"
           >
             Clear/Reset
           </button>
         </div>
       </form>
-
       {/* Display Search Results */}
       {results.length > 0 && (
-        <div className="results">
+        <div className="mt-8 w-full">
+          {" "}
+          {/* results */}
           <h3 className="mb-4 text-lg">Search Results:</h3>
-          <table>
+          <table className="w-full border-collapse">
+            {" "}
+            {/* table */}
             <thead>
               <tr>
-                <th>Title</th>
-                <th>URL</th>
+                <th className="border p-2 bg-gray-100">Title</th>
+                <th className="border p-2 bg-gray-100">URL</th>
               </tr>
             </thead>
             <tbody>
               {results.map((result, index) => (
                 <tr key={index}>
-                  <td>
+                  <td className="border p-2">
                     <a
                       href={result.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="text-gray-600 hover:underline"
                     >
                       {result.title}
                     </a>
                   </td>
-                  <td>
-                    <button onClick={() => handleCopy(result.url)}>Copy</button>
+                  <td className="border p-2">
+                    <button
+                      onClick={() => handleCopy(result.url)}
+                      className="bg-red-500 text-white px-3 py-1 rounded"
+                    >
+                      Copy
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -128,77 +144,6 @@ export default function SearchComponent() {
           </table>
         </div>
       )}
-
-      <style jsx>{`
-        .search-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 2rem;
-        }
-
-        .search-form {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          width: 300px;
-        }
-
-        input {
-          padding: 0.5rem;
-          font-size: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-
-        button {
-          padding: 0.5rem 1rem;
-          font-size: 1rem;
-          cursor: pointer;
-          border: none;
-          border-radius: 4px;
-          background-color: #0070f3;
-          color: white;
-        }
-
-        .results {
-          margin-top: 2rem;
-          width: 100%;
-        }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        th,
-        td {
-          border: 1px solid #ddd;
-          padding: 8px;
-          text-align: left;
-        }
-
-        th {
-          background-color: #f2f2f2;
-        }
-
-        td a {
-          text-decoration: none;
-          /*color: #0070f3;*/
-          color: grey;
-        }
-
-        td a:hover {
-          text-decoration: underline;
-        }
-
-        td button {
-          background-color: #f44336;
-          color: white;
-          padding: 5px 10px;
-          cursor: pointer;
-        }
-      `}</style>
     </div>
   );
 }

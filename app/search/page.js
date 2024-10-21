@@ -34,102 +34,85 @@ export default function SearchComponent() {
   };
 
   return (
-    <div className="search-container">
-      <form onSubmit={handleSearch} className="search-form">
-        {/* Search Input */}
-        <h1 className="mb-0 text-2xl font-bold">URLs Search</h1>
-        <Link href="/htmlpage">
-          <button className="back-button">⬅️ Library</button>
-        </Link>
+    <div className="flex flex-col items-center mt-12">
+      {" "}
+      {/* Centers horizontally with margin-top */}
+      <h1 className="text-2xl font-bold mb-4">URL Search</h1>
+      <Link href="/htmlpage">
+        <button className="bg-black text-white px-4 py-2 rounded-md mb-4">
+          ⬅️ Back
+        </button>{" "}
+        {/* Back Button */}
+      </Link>
+      <form
+        onSubmit={handleSearch}
+        className="flex flex-col items-center w-full max-w-md"
+      >
+        {" "}
+        {/* Centered Form */}
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter search query"
           required
+          className="border border-gray-300 p-2 rounded-md w-full mb-4"
         />
-
-        {/* Search Engine Selection */}
-        <select value={engine} onChange={(e) => setEngine(e.target.value)}>
-          <option value="google">Google</option>
-          <option value="bing">Bing</option>
-          <option value="duckduckgo">DuckDuckGo</option>
-          <option value="yahoo">Yahoo</option>
-        </select>
-
-        <div className="buttons">
-          {/* Search Button */}
-          <button type="submit">Search</button>
-
-          {/* Clear Button */}
-          <button type="button" onClick={handleClear}>
-            Clear
+        <div className="flex justify-between w-full space-x-4">
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md w-full"
+          >
+            {loading ? "Searching..." : "Search"}
+          </button>
+          <button
+            type="button"
+            onClick={handleClear}
+            className="bg-black text-white px-4 py-2 rounded-md w-full"
+          >
+            Clear/Reset
           </button>
         </div>
       </form>
-
-      <style jsx>{`
-        .search-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-        }
-
-        .search-form {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem; /* Space between elements */
-          width: 300px;
-        }
-
-        input,
-        select {
-          padding: 0.5rem;
-          font-size: 1rem;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-
-        .buttons {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .back-button {
-          padding: 0.5rem 1rem;
-          font-size: 1rem;
-          cursor: pointer;
-          border: none;
-          border-radius: 4px;
-          background-color: black;
-          color: white;
-          transition: background-color 0.3s;
-        }
-
-        button {
-          padding: 0.5rem 1rem;
-          font-size: 1rem;
-          cursor: pointer;
-          border: none;
-          border-radius: 4px;
-          background-color: #0070f3;
-          color: white;
-          transition: background-color 0.3s;
-        }
-
-        button:hover {
-          background-color: #005bb5;
-        }
-
-        button[type="button"] {
-          background-color: #f44336;
-        }
-
-        button[type="button"]:hover {
-          background-color: #d32f2f;
-        }
-      `}</style>
+      {/* Display Search Results */}
+      {results.length > 0 && (
+        <div className="w-full max-w-3xl mt-8">
+          <h3 className="text-lg mb-4">Search Results:</h3>
+          <table className="w-full table-auto border-collapse">
+            <thead>
+              <tr>
+                <th className="border px-4 py-2">Title</th>
+                <th className="border px-4 py-2">URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {results.map((result, index) => (
+                <tr key={index}>
+                  <td className="border px-4 py-2">
+                    <a
+                      href={result.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500"
+                    >
+                      {result.title}
+                    </a>
+                  </td>
+                  <td className="border px-4 py-2">
+                    <button
+                      onClick={() => handleCopy(result.url)}
+                      className="bg-red-500 text-white px-2 py-1 rounded-md"
+                    >
+                      Copy
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
