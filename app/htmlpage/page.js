@@ -211,20 +211,20 @@ export default function Home() {
       )}
 
       <form onSubmit={handleSubmit} style={styles.form}>
-        <input
+        {/*<input
           type="text"
           placeholder="Enter a title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           style={styles.input}
-        />
-        <input
+        />*/}
+        {/*<input
           type="text"
           placeholder="Enter media URL or YouTube Video ID"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           style={styles.input}
-        />
+        />*/}
         {error && <p style={styles.error}>{error}</p>}
 
         <div
@@ -234,14 +234,14 @@ export default function Home() {
             width: "100%",
           }}
         >
-          <button type="submit" style={styles.button}>
+          {/*<button type="submit" style={styles.button}>
             Add Media
-          </button>
+          </button>*/}
           <Link href="/youtube">
-            <button style={styles.youtubeButton}>🔍 YouTube</button>
+            <button style={styles.youtubeButton1}>🔍 YouTube</button>
           </Link>
           <Link href="/customsearch">
-            <button style={styles.youtubeButton}>🔍 URLs</button>
+            <button style={styles.youtubeButton2}>🔍 URLs</button>
           </Link>
         </div>
       </form>
@@ -341,14 +341,24 @@ const styles = {
     cursor: "pointer",
   },
 
-  youtubeButton: {
+  youtubeButton1: {
     padding: "10px 20px",
     backgroundColor: "black",
     color: "#fff",
     border: "none",
     borderRadius: "4px",
     cursor: "pointer",
-    marginLeft: "5px",
+    marginLeft: "0px",
+  },
+
+  youtubeButton2: {
+    padding: "10px 20px",
+    backgroundColor: "black",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    marginLeft: "20px",
   },
 
   resetbutton: {

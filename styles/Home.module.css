@@ -31,3 +31,8 @@
 
   color: transparent; /* Make the text color transparent so the gradient shows */
 }
+
+/* Add this to your CSS file if needed */
+.transition-opacity {
+  transition: opacity 0.7s ease;
+}

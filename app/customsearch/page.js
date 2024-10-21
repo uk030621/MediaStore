@@ -54,10 +54,42 @@ export default function SearchComponent() {
     setResults([]);
   };
 
-  // Handle copying the URL to the clipboard
-  const handleCopy = (url) => {
-    navigator.clipboard.writeText(url);
-    alert(`Copied URL: ${url}`);
+  // New function to add URL to the library and redirect to the library page
+  const handleAddURL = async (url, title) => {
+    try {
+      const response = await fetch("/api/urlhtml", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          url: url, // URL to add
+          title: title, // Use the result title
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add URL to the library.");
+      }
+
+      // Optionally redirect to the library after adding the URL
+      window.location.href = "/htmlpage";
+    } catch (error) {
+      console.error("Error adding URL to the library:", error);
+      alert("Failed to add URL to the library.");
+    }
+  };
+
+  // Handle copying the URL, automatically adding it to the library, and redirecting
+  const handleCopy = async (url, title) => {
+    try {
+      // Copy the URL to the clipboard
+      await navigator.clipboard.writeText(url);
+      alert(`Copied URL: ${url}`);
+
+      // Automatically add the URL to the library
+      await handleAddURL(url, title);
+    } catch (err) {
+      console.error("Failed to copy and add URL: ", err);
+    }
   };
 
   return (
@@ -121,10 +153,10 @@ export default function SearchComponent() {
                   </td>
                   <td className="border p-2">
                     <button
-                      onClick={() => handleCopy(result.url)}
+                      onClick={() => handleCopy(result.url, result.title)}
                       className="bg-red-500 text-white px-3 py-1 rounded"
                     >
-                      Copy
+                      Select
                     </button>
                   </td>
                 </tr>

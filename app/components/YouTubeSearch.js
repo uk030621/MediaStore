@@ -39,12 +39,39 @@ const YouTubeSearch = () => {
     setError(null); // Clear any error messages
   };
 
-  // Function to copy video ID
-  const handleCopyVideoID = (videoId) => {
+  // New function to handle adding media (POST request to your MongoDB backend)
+  const handleAddMedia = async (videoId, title) => {
+    try {
+      const response = await fetch("/api/urlhtml", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          url: videoId, // Use the video ID here
+          title: title, // Use the video title
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add video to the library.");
+      }
+
+      // Optionally redirect to the library after adding the video
+      window.location.href = "/htmlpage";
+    } catch (error) {
+      console.error("Error adding video to the library:", error);
+      alert("Failed to add video to the library.");
+    }
+  };
+
+  // Function to copy video ID and automatically add it to the library
+  const handleCopyVideoID = (videoId, title) => {
     navigator.clipboard
       .writeText(videoId)
-      .then(() => {
-        alert("Video ID copied to clipboard!");
+      .then(async () => {
+        alert("Video ID copied to clipboard and added to the library!");
+
+        // Automatically add media to the library
+        await handleAddMedia(videoId, title);
       })
       .catch((err) => {
         console.error("Failed to copy the video ID: ", err);
@@ -135,9 +162,11 @@ const YouTubeSearch = () => {
               </p>
               <button
                 className="bg-green-500 text-white p-2 mt-2 rounded-md"
-                onClick={() => handleCopyVideoID(video.id.videoId)}
+                onClick={() =>
+                  handleCopyVideoID(video.id.videoId, video.snippet.title)
+                }
               >
-                Copy Video ID
+                Add to Library
               </button>
             </div>
           </div>
