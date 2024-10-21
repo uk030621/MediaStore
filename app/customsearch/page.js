@@ -96,7 +96,7 @@ export default function SearchComponent() {
           <button
             type="button"
             onClick={handleClear}
-            className="px-4 py-2 bg-black text-white rounded"
+            className="px-3 py-2 bg-black text-white rounded"
           >
             Clear/Reset
           </button>

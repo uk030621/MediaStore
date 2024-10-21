@@ -34,7 +34,7 @@ export default function SearchComponent() {
   };
 
   return (
-    <div className="search-container">
+    <div className="container mx-auto mt-8">
       <form onSubmit={handleSearch} className="search-form">
         {/* Search Input */}
         <h1 className="mb-0 text-2xl font-bold">URLs Search</h1>
