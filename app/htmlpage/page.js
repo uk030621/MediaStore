@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import YouTube from "react-youtube"; // Import YouTube component from 'react-youtube'
+import YouTube from "react-youtube";
 
 export default function Home() {
   const [url, setUrl] = useState("");
@@ -18,40 +18,30 @@ export default function Home() {
   const collectionRoute = "/api/urlhtml";
 
   const getContentType = (url) => {
-    if (isYouTubeUrl(url)) {
-      return "youtube";
-    }
+    if (isYouTubeUrl(url)) return "youtube";
     const extension = url.split(".").pop().toLowerCase();
-    if (["jpg", "jpeg", "png", "gif"].includes(extension)) {
-      return "image";
-    } else if (["mp4", "webm", "ogg"].includes(extension)) {
-      return "video";
-    } else {
-      return "webpage";
-    }
+    if (["jpg", "jpeg", "png", "gif"].includes(extension)) return "image";
+    if (["mp4", "webm", "ogg"].includes(extension)) return "video";
+    return "webpage";
   };
 
   const isYouTubeUrl = (url) => {
     const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
-    return youtubeRegex.test(url) || url.length === 11; // Also treat 11-character strings as YouTube IDs
+    return youtubeRegex.test(url) || url.length === 11;
   };
 
   const extractYouTubeId = (url) => {
-    if (url.length === 11) {
-      return url; // Assume it's a raw video ID
-    }
+    if (url.length === 11) return url;
     const videoIdMatch = url.match(
       /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/
     );
-    return videoIdMatch ? videoIdMatch[1] : null; // Return the video ID or null if no match
+    return videoIdMatch ? videoIdMatch[1] : null;
   };
 
   const fetchUrls = async () => {
     try {
       const res = await fetch(collectionRoute);
-      if (!res.ok) {
-        throw new Error("Failed to fetch URLs");
-      }
+      if (!res.ok) throw new Error("Failed to fetch URLs");
       const data = await res.json();
       setStoredUrls(data.urls);
       setFilteredUrls(data.urls);
@@ -67,25 +57,13 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!title.trim()) {
-      setError("Please enter a title.");
-      return;
-    }
-
-    if (!url.trim()) {
-      setError("Please enter a URL or YouTube Video ID.");
-      return;
-    }
+    if (!title.trim()) return setError("Please enter a title.");
+    if (!url.trim()) return setError("Please enter a URL or YouTube Video ID.");
 
     const contentType = getContentType(url.trim());
-
     if (contentType === "youtube") {
       const videoId = extractYouTubeId(url.trim());
-      if (!videoId) {
-        setError("Invalid YouTube URL or Video ID.");
-        return;
-      }
+      if (!videoId) return setError("Invalid YouTube URL or Video ID.");
     }
 
     try {
@@ -95,10 +73,7 @@ export default function Home() {
         body: JSON.stringify({ url: url.trim(), title: title.trim() }),
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to add media.");
-      }
-
+      if (!res.ok) throw new Error("Failed to add media.");
       setUrl("");
       setTitle("");
       setError("");
@@ -117,10 +92,7 @@ export default function Home() {
         body: JSON.stringify({ id }),
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to delete media.");
-      }
-
+      if (!res.ok) throw new Error("Failed to delete media.");
       fetchUrls();
     } catch (err) {
       console.error(err);
@@ -129,9 +101,7 @@ export default function Home() {
   };
 
   const handleImageClick = (storedUrl) => {
-    const contentType = getContentType(storedUrl.url);
-
-    if (contentType === "image") {
+    if (getContentType(storedUrl.url) === "image") {
       setDisplayedImageUrl(storedUrl.url);
     } else {
       setDisplayedImageUrl("");
@@ -156,12 +126,12 @@ export default function Home() {
       case "video":
         return (
           <div style={styles.videoContainer}>
-            {loading && <p>Loading...</p>} {/* Loading message */}
+            {loading && <p>Loading...</p>}
             <video
               controls
               style={styles.previewVideo}
-              onLoadedData={() => setLoading(false)} // Stop loading when video is ready
-              onLoadStart={() => setLoading(true)} // Start loading when video starts fetching
+              onLoadedData={() => setLoading(false)}
+              onLoadStart={() => setLoading(true)}
             >
               <source src={storedUrl.url} type="video/mp4" />
               Your browser does not support the video tag.
@@ -171,33 +141,30 @@ export default function Home() {
       case "youtube": {
         const videoId = extractYouTubeId(storedUrl.url);
         if (!videoId) return <p>Invalid YouTube Video ID</p>;
+
         return (
-          <>
-            {loading && <p>Loading...</p>} {/* Loading message */}
-            <YouTube
-              videoId={videoId}
-              opts={{
-                width: "100%",
-                height: "200px",
-                playerVars: {
-                  autoplay: 0,
-                  modestbranding: 1,
-                },
-              }}
-              onReady={() => setLoading(false)} // Stop loading once YouTube player is ready
-              onPlay={() => setLoading(false)} // Stop loading when video plays
-              onStateChange={(e) => {
-                if (e.data === 1) setLoading(false); // Playing state
-                if (e.data === 3) setLoading(true); // Buffering state
-              }}
-            />
-          </>
+          <YouTube
+            videoId={videoId}
+            opts={{
+              width: "100%",
+              height: "200px",
+              playerVars: {
+                autoplay: 0,
+                modestbranding: 1,
+              },
+            }}
+            onReady={() => setLoading(false)}
+            onPlay={() => setLoading(false)}
+            onStateChange={(e) => {
+              if (e.data === 1) setLoading(false); // Playing
+              if (e.data === 3) setLoading(true); // Buffering
+            }}
+          />
         );
       }
       default:
         return (
           <div style={styles.webpagePreview}>
-            {/*<p>{storedUrl.title}</p>*/}
             <a
               href={storedUrl.url}
               target="_blank"
@@ -211,9 +178,7 @@ export default function Home() {
     }
   };
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  const handleSearchChange = (e) => setSearchTerm(e.target.value);
 
   useEffect(() => {
     if (searchTerm.trim() === "") {
@@ -233,10 +198,8 @@ export default function Home() {
 
   return (
     <div style={styles.container}>
-      {/* Title */}
       <h2 style={styles.title}>Media Library</h2>
 
-      {/* Displayed Image */}
       {displayedImageUrl && (
         <Image
           src={displayedImageUrl}
@@ -247,7 +210,6 @@ export default function Home() {
         />
       )}
 
-      {/* Submission Form */}
       <form onSubmit={handleSubmit} style={styles.form}>
         <input
           type="text"
@@ -281,13 +243,9 @@ export default function Home() {
           <Link href="/customsearch">
             <button style={styles.youtubeButton}>🔍 URLs</button>
           </Link>
-          {/*<Link href="/search"><button style={styles.youtubeButton}>🔍 URLs</button></Link>*/}
-          {/*<a className='ml-4' href="https://cse.google.com/cse?cx=60e15f859caa94509" target="_blank" rel="noopener noreferrer">🔍 google it</a>*/}
-          {/*<Link className="ml-5 text-white bg-slate-800" href="/youtube">Search YouTube</Link>*/}
         </div>
       </form>
 
-      {/* Search functionality */}
       <input
         className="search-input"
         type="text"
@@ -300,15 +258,12 @@ export default function Home() {
         Reset
       </button>
 
-      {/* Stored Media List */}
       <div style={{ marginTop: "25px" }}>
-        {/*<h2 style={styles.subtitle}>Stored Media:</h2>*/}
         <ul style={styles.urlList}>
           {filteredUrls.map((storedUrl) => (
             <li key={storedUrl._id} style={styles.urlItem}>
               <div style={styles.previewContainer}>
-                <h3 style={styles.vidTitle}>{storedUrl.title}</h3>{" "}
-                {/* Display the title here */}
+                <h3 style={styles.vidTitle}>{storedUrl.title}</h3>
                 {renderPreview(storedUrl)}
                 <button
                   onClick={() => handleDelete(storedUrl._id)}
@@ -354,7 +309,7 @@ const styles = {
     marginTop: "20px",
     marginBottom: "10px",
     textAlign: "left",
-    color: "grey",
+    color: "black",
   },
   subtitle: {
     fontSize: "1.3rem",

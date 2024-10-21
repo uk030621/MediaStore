@@ -62,8 +62,6 @@ export default function SearchComponent() {
 
   return (
     <div className="flex flex-col items-center p-8">
-      {" "}
-      {/* search-container */}
       <h1 className="text-2xl font-bold mb-4">URL Search</h1>
       <Link className="mb-4" href="/htmlpage">
         <button className="bg-black text-white px-4 py-2 rounded">
@@ -71,8 +69,6 @@ export default function SearchComponent() {
         </button>
       </Link>
       <form onSubmit={handleSearch} className="flex flex-col gap-4 w-72">
-        {" "}
-        {/* search-form */}
         <input
           type="text"
           value={query}
@@ -82,8 +78,6 @@ export default function SearchComponent() {
           className="p-2 text-base border border-gray-300 rounded"
         />
         <div className="flex justify-between space-x-24">
-          {" "}
-          {/* button container */}
           <button
             type="submit"
             disabled={loading}
@@ -105,12 +99,8 @@ export default function SearchComponent() {
       {/* Display Search Results */}
       {results.length > 0 && (
         <div className="mt-8 w-full">
-          {" "}
-          {/* results */}
           <h3 className="mb-4 text-lg">Search Results:</h3>
           <table className="w-full border-collapse">
-            {" "}
-            {/* table */}
             <thead>
               <tr>
                 <th className="border p-2 bg-gray-100">Title</th>
