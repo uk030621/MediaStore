@@ -58,6 +58,8 @@ header {
 
 .nav-links a {
   color: white;
+  font-size: large;
+  font-family: "Roboto", sans-serif;
   text-decoration: none;
   padding: 0.5rem 1rem;
   display: block;
