@@ -29,7 +29,7 @@ export default function HomePage() {
           </p>
 
           {/* Instruction Panel with fade-in/fade-out effect */}
-          <div
+          {/*<div
             className={`mt-6 transition-opacity duration-700 ${
               showInstructions ? "opacity-100" : "opacity-0"
             }`}
@@ -62,16 +62,16 @@ export default function HomePage() {
                 </li>
               </ul>
             </div>
-          </div>
+          </div>*/}
           {/* Toggle instructions button */}
-          <div className="mt-8">
+          {/*<div className="mt-8">
             <button
               onClick={toggleInstructions}
               className="bg-blue-600 text-white px-4 py-2 rounded"
             >
               {showInstructions ? "Hide Instructions" : "User Instructions"}
             </button>
-          </div>
+          </div>*/}
 
           <div className="flex justify-center items-center">
             <ul className="text-center mt-6 text-slate-800">
