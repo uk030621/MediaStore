@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function SearchComponent() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -18,12 +18,12 @@ export default function SearchComponent() {
 
     try {
       // Make a POST request to the server-side API route
-      const response = await fetch('/api/customsearch', {
-        method: 'POST',
+      const response = await fetch("/api/customsearch", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ query }),  // Send the search query
+        body: JSON.stringify({ query }), // Send the search query
       });
 
       const data = await response.json();
@@ -50,7 +50,7 @@ export default function SearchComponent() {
 
   // Function to clear/reset the search form
   const handleClear = () => {
-    setQuery('');
+    setQuery("");
     setResults([]);
   };
 
@@ -63,7 +63,9 @@ export default function SearchComponent() {
   return (
     <div className="search-container">
       <h1 className="text-2xl font-bold mb-4">URL Search</h1>
-      <Link className="mb-4" href="/htmlpage"><button style={{backgroundColor:'black'}}>⬅️ Back</button></Link>
+      <Link className="mb-4" href="/htmlpage">
+        <button style={{ backgroundColor: "black" }}>⬅️ Back</button>
+      </Link>
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
@@ -73,8 +75,24 @@ export default function SearchComponent() {
           required
         />
         <div className="flex space-x-24">
-          <button style={{width:'fit-content'}} type="submit" disabled={loading}>{loading ? "Searching..." : "Search"}</button>
-          <button style={{width:'fit-content', marginLeft:'100px', backgroundColor:'black'}} type="button" onClick={handleClear}>Clear/Reset</button>
+          <button
+            style={{ width: "fit-content" }}
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Searching..." : "Search"}
+          </button>
+          <button
+            style={{
+              width: "fit-content",
+              marginLeft: "100px",
+              backgroundColor: "black",
+            }}
+            type="button"
+            onClick={handleClear}
+          >
+            Clear/Reset
+          </button>
         </div>
       </form>
 
@@ -92,8 +110,18 @@ export default function SearchComponent() {
             <tbody>
               {results.map((result, index) => (
                 <tr key={index}>
-                  <td><a href={result.url} target="_blank" rel="noopener noreferrer">{result.title}</a></td>
-                  <td><button onClick={() => handleCopy(result.url)}>Copy</button></td>
+                  <td>
+                    <a
+                      href={result.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {result.title}
+                    </a>
+                  </td>
+                  <td>
+                    <button onClick={() => handleCopy(result.url)}>Copy</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -143,7 +171,8 @@ export default function SearchComponent() {
           border-collapse: collapse;
         }
 
-        th, td {
+        th,
+        td {
           border: 1px solid #ddd;
           padding: 8px;
           text-align: left;

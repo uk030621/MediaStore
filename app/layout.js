@@ -1,12 +1,11 @@
 // app/layout.js
-import './globals.css';
-import Link from 'next/link';
+import "./globals.css";
+import Link from "next/link";
 /*import Image from 'next/image'*/
 
-
 export const metadata = {
-  title: 'Media Library App',
-  description: 'Developed by LWJ',
+  title: "Media Library App",
+  description: "Developed by LWJ",
   icons: {
     icon: "/icons/icon-512x512.png", // Favicon
     apple: "/icons/icon-180x180.png", // Apple touch icon for iOS home screen
@@ -33,21 +32,26 @@ export default function RootLayout({ children }) {
               alt="Picture of the author"
             />*/}
             <ul className="nav-links">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/htmlpage">Library</Link></li>
-              <li><Link href="/services">Bonus</Link></li>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/htmlpage">Library</Link>
+              </li>
+              <li>
+                <Link href="/services">Bonus</Link>
+              </li>
               {/*<li><Link href="/htmlpage">Form</Link></li>*/}
             </ul>
           </nav>
         </header>
-        
+
         <main>{children}</main>
-        
+
         <footer>
           <p>© 2024 LWJ Media Library. All rights reserved.</p>
         </footer>
       </body>
     </html>
-  )
+  );
 }
-

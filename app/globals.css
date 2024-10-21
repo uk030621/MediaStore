@@ -58,14 +58,14 @@ header {
   text-decoration: none;
 }
 
-.nav-links a:hover{
+.nav-links a:hover {
   color: yellow;
   text-decoration-line: underline;
   text-underline-offset: 5px;
 }
 
 main {
-  padding: 0px; 
+  padding: 0px;
   max-width: 2200px;
   flex: 1; /* Expands main content to fill available space */
   display: flex;

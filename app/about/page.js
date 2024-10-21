@@ -1,6 +1,6 @@
 // app/about/page.js
-import styles from '@/styles/Home.module.css'; // Import the CSS module
-import Image from 'next/image'
+import styles from "@/styles/Home.module.css"; // Import the CSS module
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -14,16 +14,16 @@ export default function AboutPage() {
           height={200}
           alt="Picture of the author"
           style={{
-            WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,1) 50%, transparent 100%)',
-            maskImage: 'radial-gradient(circle, rgba(0,0,0,1) 50%, transparent 100%)',
+            WebkitMaskImage:
+              "radial-gradient(circle, rgba(0,0,0,1) 50%, transparent 100%)",
+            maskImage:
+              "radial-gradient(circle, rgba(0,0,0,1) 50%, transparent 100%)",
           }} // Apply the radial gradient mask
         />
       </div>
 
       <h1 className={styles.gradientText}>Media Locker</h1>
-      <p className={styles.description}>
-        Media Locker Goes Here
-      </p>
+      <p className={styles.description}>Media Locker Goes Here</p>
     </div>
   );
 }
