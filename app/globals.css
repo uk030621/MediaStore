@@ -30,10 +30,11 @@ header {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space out elements across the navbar */
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0.5rem 1rem;
 }
 
 /*.logo {
@@ -45,17 +46,21 @@ header {
 .nav-links {
   list-style: none;
   display: flex;
-  margin-right: 0px;
-  margin-left: 30px;
+  justify-content: space-between; /* Distribute the links evenly */
+  flex: 1; /* Allow links to take up full available space */
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li {
-  margin-left: 3rem;
+  margin: 0; /* Remove default margin */
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
 }
 
 .nav-links a:hover {
@@ -83,18 +88,18 @@ footer {
   width: 100%;
 }
 
-/* Media Query 
-@media (max-width: 768px) {
+/* Media query for smaller screens */
+@media (max-width: 375px) {
   .nav-links {
-    flex-direction: column;
+    flex-direction: column; /* Stack links vertically */
+    align-items: center;
+    width: 100%;
   }
 
   .nav-links li {
-    margin: 0.5rem 0;
+    margin: 0.5rem 0; /* Add space between vertical links */
   }
-}*/
-
-/* app/globals.css */
+}
 
 .background-container {
   position: relative;
