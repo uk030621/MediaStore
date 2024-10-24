@@ -153,7 +153,10 @@ export default function Home() {
                 modestbranding: 1,
               },
             }}
-            onReady={() => setLoading(false)}
+            onReady={(e) => {
+              e.target.getIframe().setAttribute("allowfullscreen", "1");
+              setLoading(false);
+            }}
             onPlay={() => setLoading(false)}
             onStateChange={(e) => {
               if (e.data === 1) setLoading(false); // Playing
